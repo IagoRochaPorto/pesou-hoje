@@ -69,7 +69,7 @@ export class HomePage {
               },
               scaleLabel: {
                 display: true,
-                labelString: 'Date',
+                labelString: 'Período',
               },
             },
           ],

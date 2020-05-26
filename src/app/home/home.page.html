@@ -6,36 +6,30 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content  >
+<ion-content>
   <canvas #chart></canvas>
 
-    <ion-list >
-      <ion-item *ngFor="let dado of dadosFront; let i = index" (click)="abrirAlertaDeletar(i)">
-        <ion-icon slot="start" name="trending-down"></ion-icon>
-        <ion-label>
-          <ion-grid>
-            <ion-row>
-              <ion-col size="6" class="ion-text-start">
-                <span class="peso">{{dado.peso }}kg</span>
-              </ion-col>
-              <ion-col size="6" class="ion-text-end">
-                <span class="data">{{dado.data | date:"dd/MM/yyyy"}}</span>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  
+  <ion-list>
+    <ion-item *ngFor="let dado of dadosFront; let i = index" (click)="abrirAlertaDeletar(i)">
+      <ion-icon slot="start" name="trending-down"></ion-icon>
+      <ion-label>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6" class="ion-text-start">
+              <span class="peso">{{dado.peso }}kg</span>
+            </ion-col>
+            <ion-col size="6" class="ion-text-end">
+              <span class="data">{{dado.data | date:"dd/MM/yyyy"}}</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="addWeight()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  
 </ion-content>
-
-
-  
-
