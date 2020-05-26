@@ -43,7 +43,6 @@ export class HomePage {
     const peso = this.dados.map((dado) => {
       return dado.peso
     })
-    console.log(label.length, peso.length)
     this.chartVar = new Chart(this.chart.nativeElement, {
       type: 'line',
       data: {
@@ -88,7 +87,6 @@ export class HomePage {
     const dadosRegistro = await modal.onDidDismiss()
 
     if (!dadosRegistro.data) {
-      console.log('cancelado')
     } else {
       let dadosRegistrados = await this.storage.get('dados')
       if (dadosRegistrados) {
@@ -134,7 +132,6 @@ export class HomePage {
         return dado
       }
     })
-    console.log(dadosCorretos)
     this.dados = dadosCorretos.slice().reverse()
     await this.storage.set('dados', this.dados)
     this.dadosFront = dadosCorretos
