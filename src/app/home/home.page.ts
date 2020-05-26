@@ -93,12 +93,15 @@ export class HomePage {
       let dadosRegistrados = await this.storage.get('dados')
       if (dadosRegistrados) {
         dadosRegistrados.push({ data: dadosRegistro.data.data, peso: dadosRegistro.data.peso })
-        await this.storage.set('dados', dadosRegistrados)
-
-        this.dados.push({ data: dadosRegistro.data.data, peso: dadosRegistro.data.peso })
-        this.dadosFront = this.dados.slice().reverse()
-        this.mostrarChart()
+      } else {
+        dadosRegistrados = [{ data: dadosRegistro.data.data, peso: dadosRegistro.data.peso }]
       }
+
+      await this.storage.set('dados', dadosRegistrados)
+
+      this.dados.push({ data: dadosRegistro.data.data, peso: dadosRegistro.data.peso })
+      this.dadosFront = this.dados.slice().reverse()
+      this.mostrarChart()
     }
   }
 
