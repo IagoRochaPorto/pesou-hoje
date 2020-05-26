@@ -80,29 +80,46 @@ export class HomePage {
 
 
   mostrarChart() {
+    let timeFormat = 'MM/DD/YYYY HH:mm'
     this.dadosFormatados = this.dados.map(dado => {
       return  { x: new Date(dado.data), y:dado.peso}
     })
     const label = this.dados.map(dado => {
-      const dia = new Date(dado.data).getDate()
-      let mes = <any> (new Date(dado.data).getMonth() + 1).toString()
-      mes.length > 1 ? mes = mes : mes = '0' + mes + ''
-      return dia + '/' + mes
+      return new Date(dado.data)
+      
     })
     const peso = this.dados.map(dado => {
       return dado.peso
     })
+    console.log(label.length, peso.length)
     this.chartVar = new Chart(this.chart.nativeElement, {
       type: 'line',
       data: {
         labels: [...label],
         datasets: [{
-          label: 'Viewers in millions',
+          label: 'Peso em Kg',
           data: [...peso],
-          borderColor: 'rgb(38, 194, 129)',// array should have same number of elements as number of dataset
+          borderColor: 'rgb(38, 194, 129)',
           borderWidth: 1
         }]
       },
+      options: {
+        scales: {
+					xAxes: [{
+						type: 'time',
+						time: {
+              unit: 'day',
+              displayFormats: {
+                day: 'DD/MM',
+              }
+						},
+						scaleLabel: {
+							display: true,
+							labelString: 'Date'
+						}
+					}],
+				},
+      }
       
     });
 
