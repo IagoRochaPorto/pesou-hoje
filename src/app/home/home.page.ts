@@ -34,7 +34,6 @@ export class HomePage {
   }
 
   mostrarChart() {
-    let timeFormat = 'MM/DD/YYYY HH:mm'
     this.dadosFormatados = this.dados.map((dado) => {
       return { x: new Date(dado.data), y: dado.peso }
     })
